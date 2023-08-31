@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <title>Tailwind Navigation Example</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <style>
+    .dropdown-content {
+      display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .accordion-content {
+        display: none;
+      }
+  
+      .accordion-label.active + .accordion-content {
+        display: block;
+      }
+  
+      .dropdown-content {
+        display: none;
+      }
+  
+      .dropdown:hover .dropdown-content {
+        display: block;
+      };
+     
+        .brand {
+            position: absolute;
+            top: 20px; /* تغییر مقدار top برای تعیین موقعیت افقی برند */
+            left: 20px; /* تغییر مقدار left برای تعیین موقعیت عمودی برند */
+        }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const accordionLabels = document.querySelectorAll('.accordion-label');
+
+      accordionLabels.forEach(label => {
+        label.addEventListener('click', () => {
+          if (label.classList.contains('active')) {
+            label.classList.remove('active');
+          } else {
+            accordionLabels.forEach(otherLabel => otherLabel.classList.remove('active'));
+            label.classList.add('active');
+          }
+        });
+      });
+    });
+
+    window.addEventListener('DOMContentLoaded', function () {
+      const navigation = document.querySelector('.navigation');
+
+      navigation.classList.remove('hidden');
+    });
+  </script>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-white shadow-md p-4 sticky top-0 z-10">
+    <div class="container mx-auto px-2 md:px-6 lg:px-8 xl:px-10 2xl:px-16">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-1 md:space-x-4">
+          <a href="#" class="text-white bg-red-800 hover:bg-gray-300 font-serif py-2 px-2 md:px-4 md:py-2  w-24 h-10 sm:p rounded text-center">آگهی ثبت</a>
+          <a href="#" class="text-gray-600 hover:bg-gray-400 font-serif w-5 md:w-auto hidden md:flex">پشتیبانی</a>
+          
+          <div class="hidden md:flex space-x-2">
+            <a href="#" class="text-gray-600 hover:text-gray-800">
+              <span class="font-serif mx-1">چت</span>
+              <i class="bi bi-chat"></i>
+            </a>
+            <a href="#" class="text-gray-600 hover:text-gray-800">
+              <span class="font-serif">دیوار من</span>
+              <i class="bi bi-person"></i>
+            </a>
+          </div>
+        </div>
+        <div class="md:hidden flex items-center space-x-2 mt-2">
+          <input type="text" class="border border-gray-300 rounded px-2 py-1 w-full" placeholder="Search...">
+          <div class="relative dropdown">
+            <button class="text-gray-600 hover:text-gray-800 flex items-center w-full">
+              Dropdown
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <ul class="dropdown-content absolute hidden bg-white border border-gray-300 py-2 mt-2 rounded shadow-md w-full">
+              <li><a href="#" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Option 1</a></li>
+              <li><a href="#" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Option 2</a></li>
+             
+            </ul>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-2">
+          <input type="text" class="border border-gray-300 rounded px-2 py-1 w-28 md:w-40 text-center" placeholder="جست و جو">
+          <div class="relative dropdown">
+            <button class="text-gray-600 hover:text-gray-800 flex items-center">
+              لیست
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <ul class="dropdown-content absolute hidden bg-white border border-gray-300 py-2 mt-2 rounded shadow-md">
+              <li><a href="#" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Option 1</a></li>
+              <li><a href="#" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Option 2</a></li>
+            </ul>
+          </div>
+          <a href="#" class="text-gray-600 hover:text-gray-800">
+            <div class="flex items-center">
+              <span class="font-serif">تهران</span>
+              <i class="bi bi-geo-alt"></i>
+            </div>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-gray-800">
+            <img class="w-10 md:w-16" src="../images/download.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Rest of your content here -->
+ <!--
+  <div class="bg-gray-100">
+    <nav class="bg-white shadow-md p-4 sticky top-0 ">
+      <div class="container mx-auto px-2 md:px-6 lg:px-8 xl:px-10 2xl:px-16">
+        <div class="flex items-center justify-between">
+          <!-- Navigation items here 
+        </div>
+      </div>
+    </nav>-->
+  <div>
+    <div class="bg-gray-100 h-screen flex">
+        <div class="w-1/4 sm:w-1/4  shadow-md p-4 fixed right-0 top-0 h-full text-right">
+       
+                <nav class="space-y-1 navigation hidden sticky z md:block" style="max-height: calc(100vh - 80px); overflow-y: auto;">
+                    <h2 class="text-lg font-semibold mb-4">دسته </h2>
+                    <a href="#" class="block text-gray-600 hover:bg-gray-200 py-2 px-4 md:flex md:items-center"><div><span class="px-2 md:w-10 md:text-left inline-block">املاک</span><i class="bi bi-house-door ml-2 md:ml-0"></i></div></a>
+              
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4 "><div><span class="px-2 ">املاک</span><i class="bi bi-house-door "></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">وسایل نقلیه </span><i class="bi bi-car-front"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">کالای دیجیتال</span><i class="bi bi-phone-vibrate"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">خانه و آشپزخانه</span><i class="bi bi-basket3"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">خدمات</span><i class="bi bi-grid-1x2"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">وسایل شخصی </span><i class="bi bi-person-video3"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">سرگرمی و فراغت</span><i class="bi bi-controller"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">اجتماعی</span><i class="bi bi-people-fill"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">تجهیزات صنعتی</span><i class="bi bi-gear"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2">استخدام و کاریابی </span><i class="bi bi-gem"></i></div></a>
+          <a href="#" class="block text-gray-600 text-sm hover:bg-gray-200 py-2 px-4"><div><span class="px-2"> رزومه کارجویان</span><i class="bi bi-journal-medical"></i></div></a>
+
+          <label class="accordion-label block text-block-600 hover:bg-gray-200 py-2 px-4 cursor-pointer ">محل</label>
+          <div class="accordion-content ml-4 space-y-2">
+            <input type="text" class="border border-block-400 p-2 w-full rounded" placeholder="تعیین محل">
+          </div>
+  
+          <label class="accordion-label block text-block-600 hover:bg-gray-200 py-2 px-4 cursor-pointer">قیمت</label>
+          <div class="accordion-content ml-4 space-y-2">
+            <input type="text" class="border border-gray-400 p-2 w-full rounded" placeholder="حداقل">
+            <input type="text" class="border border-gray-400 p-2 w-full rounded" placeholder="حداکثر">
+
+          </div>
+  
+          <label class="accordion-label block text-block-600 hover:bg-gray-200 py-2 px-4 cursor-pointer">وضعیت آگهی</label>
+          <div class="accordion-content ml-4 space-y-2">
+            <input type="text" class="border border-gray-400 p-2 w-full rounded" placeholder="وضعیت">
+
+           
+          </div>
+
+          <span class=" block text-gray-400 text-sm  cursor-pointer gap-2">درباره دیوار</span>
+          <span class=" block text-gray-400 text-sm cursor-pointer gap-2">دریافت برنامه</span>
+          <span class="l block text-gray-400 text-sm  cursor-pointer">بلاگ دیوار</span>
+          <span class=" block text-gray-400 text-sm cursor-pointer"> کسب و کار</span>
+          <span class="l block text-gray-400 text-sm  cursor-pointer">قوانین </span>
+
+         
+        </nav>
+        <div >
+            <ul class="flex justify-center flex-row gap-2">
+                <li><i class="bi bi-instagram"></i></li>
+                <li><i class="bi bi-linkedin"></i></li>
+                <li><i class="bi bi-twitter"></i></li>
+            </ul>
+          </div>
+          <div>
+            <ul class="flex justify-center flex-row gap-2">
+                <li><img class="w-12" src="../images/Untitled.png" alt=""></li>
+                <li><img class="w-12"  src="../images/1.png" alt=""></li>
+                <li><img class="w-12"  src="../images/Untitled.png" alt=""></li>
+            </ul>
+          </div>
+      </div>
+
+      <div class="container mx-auto px-2 md:px-6 lg:px-8 xl:px-10">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-1">
+      
+            <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+        
+        
+     
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+       
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+
+       
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+
+       
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+
+       
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+
+        
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+       
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+        
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+
+      
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+
+       
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+     
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+
+       
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+      
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+        
+        <div class="relative border border-gray-300 rounded  lg:w-60 lg:h-52 md:w-36 md:h-36 sm:w-28 sm:h24- flex items-center box">
+            <img class="w-32 h-32 object-cover absolute left-0" src="../images/download.jpg" alt="ماشین">
+            <div class="ml-36 bg-white md:p-2 flex flex-col">
+                <span class="font-semibold">BMW</span>
+                <span>لحظاتی پیش در شهرک غرب</span>
+                <span>295000km</span>
+            </div>
+        </div>
+  </div>
+      
+</div>
+
+  </div>
+  
+</body>
+</html>
