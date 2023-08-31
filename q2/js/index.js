@@ -44,7 +44,7 @@ function nextMeal(inputTime) {
     }
 }
 
-// Test cases
+
 nextMeal("5:50 a.m");
 nextMeal("2:00 p.m");
 nextMeal("12:00 p.m");
